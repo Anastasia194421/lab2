@@ -13,7 +13,7 @@ private:
     int hours;
     int minute;
 public:
-    Train(const string &destination, int number, int hours, int minute);
+    Train(string  destination, int number, int hours, int minute);
 
     const string &getDestination() const;
 
@@ -40,6 +40,7 @@ public:
     bool operator!=(const Train &rhs) const;
 
     int getNumber() const;
+
 };
 
 

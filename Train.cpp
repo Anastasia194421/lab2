@@ -1,7 +1,10 @@
 #include "Train.h"
 
-Train::Train(const string &destination, int number, int hours, int minute) : destination(destination), number(number),
-                                                                             hours(hours), minute(minute) {}
+#include <utility>
+
+Train::Train(string  destination, int number, int hours, int minute) : destination(std::move(destination)),
+                                                                      number(number),
+                                                                      hours(hours), minute(minute) {}
 
 const string &Train::getDestination() const {
     return destination;
@@ -59,10 +62,14 @@ bool Train::operator>=(const Train &rhs) const {
 }
 
 ostream &operator<<(ostream &os, const Train &train) {
-    if(train.minute < 10) {
-        os << "destination: " << train.destination << " number train: " << train.number << " " << train.hours
-           << ":0" << train.minute;
+    os << "destination: " << train.destination << " number train: " << train.number << " ";
+    if (train.hours < 10) {
+        os << "0";
     }
-
+    os << train.hours << ":";
+    if (train.minute < 10) {
+            os << "0";
+    }
+    os << train.minute;
     return os;
 }

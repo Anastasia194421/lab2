@@ -6,7 +6,7 @@
 using namespace std;
 
 vector<Train> findTrains(const string& destination, const multiset<Train>& trains)  {
-    vector<Train> trainsNow(1);
+    vector<Train> trainsNow;
     for(const Train& train: trains) {
         if(train.getDestination() == destination) {
             trainsNow.push_back(train);
@@ -53,6 +53,7 @@ int main() {
                 cin >> hours;
                 cout << "Enter minutes: ";
                 cin >> minutes;
+                trains.insert(*(new Train(des,number,hours,minutes)));
                 break;
             }
             case 3: {

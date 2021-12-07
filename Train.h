@@ -15,6 +15,10 @@ private:
 public:
     Train(string  destination, int number, int hours, int minute);
 
+    Train(const Train& train);
+
+    Train();
+
     const string &getDestination() const;
 
     void setDestination(const string &destination);

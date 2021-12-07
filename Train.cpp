@@ -1,10 +1,19 @@
+#include <iostream>
 #include "Train.h"
-
-#include <utility>
 
 Train::Train(string  destination, int number, int hours, int minute) : destination(std::move(destination)),
                                                                       number(number),
-                                                                      hours(hours), minute(minute) {}
+                                                                      hours(hours), minute(minute) {
+    std::cout << "Конструтор Train" << std::endl;
+}
+
+Train::Train(const Train& train) {
+    cout << "Конструтор копий" << endl;
+    this->hours = train.hours;
+    this->minute = train.minute;
+    this->number = train.minute;
+    this->destination = train.destination;
+}
 
 const string &Train::getDestination() const {
     return destination;
@@ -72,4 +81,11 @@ ostream &operator<<(ostream &os, const Train &train) {
     }
     os << train.minute;
     return os;
+}
+
+Train::Train() {
+    number = 0;
+    hours = 0;
+    minute = 0;
+    cout << "Конструтор Train" << endl;
 }

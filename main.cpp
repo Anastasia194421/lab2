@@ -31,7 +31,7 @@ int main() {
     trains.insert(*tr6);
     int in = 1;
     while (in != 0) {
-        cout << "Enter number menu: ";
+        cout << "Enter number menu:\n1 - print trains\n2 - add train\n3 - find\n";
         cin >> in;
         switch (in) {
             case 1: {
@@ -61,6 +61,9 @@ int main() {
                 string des;
                 cin >> des;
                 vector<Train> v = findTrains(des, trains);
+                if (v.empty()) {
+                    cout << "No trains" << endl;
+                }
                 for(const Train& train: v) {
                     cout << train << endl;
                 }

@@ -4,14 +4,14 @@
 Train::Train(string  destination, int number, int hours, int minute) : destination(std::move(destination)),
                                                                       number(number),
                                                                       hours(hours), minute(minute) {
-    std::cout << "Конструтор Train" << std::endl;
+    std::cout << "Constructor Train" << std::endl;
 }
 
 Train::Train(const Train& train) {
-    cout << "Конструтор копий" << endl;
+    cout << "Constructor copy" << endl;
     this->hours = train.hours;
     this->minute = train.minute;
-    this->number = train.minute;
+    this->number = train.number;
     this->destination = train.destination;
 }
 
@@ -71,7 +71,7 @@ bool Train::operator>=(const Train &rhs) const {
 }
 
 ostream &operator<<(ostream &os, const Train &train) {
-    os << "destination: " << train.destination << " number train: " << train.number << " ";
+    os << train.destination << " #" << train.number << " ";
     if (train.hours < 10) {
         os << "0";
     }
@@ -87,5 +87,5 @@ Train::Train() {
     number = 0;
     hours = 0;
     minute = 0;
-    cout << "Конструтор Train" << endl;
+    cout << "Constructor Train" << endl;
 }

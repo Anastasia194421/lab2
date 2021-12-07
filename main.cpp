@@ -1,14 +1,42 @@
 #include <iostream>
 #include <set>
 #include <vector>
+#include <fstream>
 #include "Train.h"
 
 using namespace std;
 
-vector<Train> findTrains(const string& destination, const multiset<Train>& trains)  {
+
+void read() {
+    std::ifstream in;
+    in.open(R"(C:\Users\Ilya\Desktop\YandexDisk\Labs\C++\Nastya\lab2.1\Text.txt)");
+    if (in.is_open()) {
+        std::cout << "Is open" << std::endl;
+    } else {
+        std::cout << "Error read file" << std::endl;
+    }
+    bool flag = false;
+    while (!in.eof()) {
+        char c;
+        in.get(c);
+
+        if (c == '\"') {
+            if(flag)
+                std::cout << std::endl;
+            flag = !flag;
+        }
+        if (flag && c != '\"') {
+            std::cout << c;
+        }
+    }
+    std::cout << std::endl;
+}
+
+
+vector<Train> findTrains(const string &destination, const multiset<Train> &trains) {
     vector<Train> trainsNow;
-    for(const Train& train: trains) {
-        if(train.getDestination() == destination) {
+    for (const Train &train: trains) {
+        if (train.getDestination() == destination) {
             trainsNow.push_back(train);
         }
     }
@@ -16,6 +44,7 @@ vector<Train> findTrains(const string& destination, const multiset<Train>& train
 }
 
 int main() {
+    read();
     multiset<Train> trains;
     auto *tr1 = new Train("Moscow", 123, 11, 0);
     auto *tr2 = new Train("Kaliningrad", 124, 12, 0);
@@ -35,7 +64,7 @@ int main() {
         cin >> in;
         switch (in) {
             case 1: {
-                for(const Train& train: trains) {
+                for (const Train &train: trains) {
                     cout << train << endl;
                 }
                 break;
@@ -53,7 +82,7 @@ int main() {
                 cin >> hours;
                 cout << "Enter minutes: ";
                 cin >> minutes;
-                trains.insert(*(new Train(des,number,hours,minutes)));
+                trains.insert(*(new Train(des, number, hours, minutes)));
                 break;
             }
             case 3: {
@@ -64,7 +93,7 @@ int main() {
                 if (v.empty()) {
                     cout << "No trains" << endl;
                 }
-                for(const Train& train: v) {
+                for (const Train &train: v) {
                     cout << train << endl;
                 }
                 break;
@@ -72,7 +101,7 @@ int main() {
         }
     }
 
-    return  0;
+    return 0;
 }
 
 

@@ -45,7 +45,7 @@ vector<Train> findTrains(const string &destination, const multiset<Train> &train
 }
 
 int main() {
-    string fileName;
+    string fileName = "Text.txt";
     read(fileName);
     multiset<Train> trains;
     auto *tr1 = new Train("Moscow", 123, 11, 0);

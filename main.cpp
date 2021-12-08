@@ -8,9 +8,9 @@
 using namespace std;
 
 
-void read() {
+void read(string fileName) {
     std::ifstream in;
-    in.open(R"(C:\Users\Ilya\Desktop\YandexDisk\Labs\C++\Nastya\lab2.1\Text.txt)");
+    in.open(fileName);
     if (in.is_open()) {
         std::cout << "Is open" << std::endl;
     } else {
@@ -45,7 +45,8 @@ vector<Train> findTrains(const string &destination, const multiset<Train> &train
 }
 
 int main() {
-    read();
+    string fileName;
+    read(fileName);
     multiset<Train> trains;
     auto *tr1 = new Train("Moscow", 123, 11, 0);
     auto *tr2 = new Train("Kaliningrad", 124, 12, 0);

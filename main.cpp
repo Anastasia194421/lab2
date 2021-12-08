@@ -2,6 +2,7 @@
 #include <set>
 #include <vector>
 #include <fstream>
+#include <string>
 #include "Train.h"
 
 using namespace std;
